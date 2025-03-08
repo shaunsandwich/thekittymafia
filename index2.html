@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="A portfolio page dedicated to the infamous Cat Mafia" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Kitty Mafia</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body and overall page styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #000; /* black background */
+      color: #fff;      /* white text for contrast */
+      overflow-x: hidden;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    /* Header / Hero section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('cat-mafia.jpg') no-repeat center center / cover;
+      /* Fallback if image not found or for overlay */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for dramatic effect */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .hero .button {
+      text-decoration: none;
+      background: #c0392b;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .hero .button:hover {
+      background: #e74c3c;
+    }
+
+    /* Main content container */
+    .container {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Section headings */
+    h2.section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    h2.section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #c0392b;
+      margin: 0.5rem auto 0;
+    }
+
+    /* The "mafia story" section */
+    .story {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .story-text, .story-img {
+      flex: 1;
+      min-width: 280px;
+    }
+    .story-text p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .story-img img {
+      max-width: 100%;
+      border: 3px solid #c0392b;
+      border-radius: 4px;
+    }
+
+    /* The "services" or "portfolio" style section */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #111;
+      padding: 2rem;
+      border-radius: 4px;
+      border: 1px solid #333;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+    }
+    .service-card h3 {
+      margin-bottom: 1rem;
+      color: #c0392b;
+      font-size: 1.5rem;
+    }
+    .service-card p {
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      border-top: 1px solid #333;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Cat Mafia</h1>
+      <p>
+        Welcome to the underworld of whiskers and claws. The Cat Mafia is
+        notorious for ruling the streets with cunning purrs and silent steps.
+      </p>
+      <a href="#story" class="button">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Mafia Story Section -->
+    <h2 id="story" class="section-title">The Feline Underworld</h2>
+    <div class="story">
+      <div class="story-img">
+        <img src="cat-mafia2.jpg" alt="Cat Mafia in suits"/>
+      </div>
+    </div>
+
+    <!-- Most Wanted Section -->
+    <h2 class="section-title">Top 5 Most Wanted</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="john.jpg" alt="Mr. Whiskers - The Godfather" class="wanted-img" style="width: 100%; height: auto; object-fit: cover;" />
+        <h3>"The Godfather" Mr. Whiskers</h3>
+        <p>
+          Known for orchestrating the Great Tuna Heist of 2024. Distinguished by his 
+          white paws and permanent scowl. Reward: 1000 cans of premium cat food.
+          Last seen napping in various sunbeams across the city.
+        </p>
+      </div>
+      <div class="service-card">
+        <img src="tony.jpg" alt="Mr. Whiskers - The Godfather" class="wanted-img" style="width: 100%; height: auto; object-fit: cover;" />
+        <h3>"Shadow Paws" Luna</h3>
+        <p>
+          Master of stealth and infiltration. Can squeeze through any gap wider than 
+          her whiskers. Wanted for multiple counts of midnight food bowl robberies.
+          Extremely dangerous when hungry.
+        </p>
+      </div>
+      <div class="service-card">
+        <img src="mittens.jpeg" alt="Mr. Whiskers - The Godfather" class="wanted-img" style="width: 100%; height: auto; object-fit: cover;" />
+        <h3>"The Scratcher" Felix</h3>
+        <p>
+          Notorious for his furniture destruction racket. Leaves no couch unscratched.
+          Easily identified by his signature move: maintaining eye contact while 
+          slowly pushing items off tables.
+        </p>
+      </div>
+      <div class="service-card">
+        <img src="rigby.jpg" alt="Mr. Whiskers - The Godfather" class="wanted-img" style="width: 100%; height: auto; object-fit: cover;" />
+        <h3>"Catnip Queen" Mittens</h3>
+        <p>
+          Controls the entire catnip trade in the tri-state area. Known for her 
+          distinctive heart-shaped nose and ability to charm her way out of any 
+          situation. Approach with treats.
+        </p>
+      </div>
+      <div class="service-card">
+        <img src="tom.png" alt="Mr. Whiskers - The Godfather" class="wanted-img" style="width: 100%; height: auto; object-fit: cover;" />
+        <h3>"The Enforcer" Tiger</h3>
+        <p>
+          Head of the hairball placement division. Specializes in strategic 
+          3 AM zoomies and carpet claw-enforcement. Warning: Extremely vocal 
+          during interrogations.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 The Cat Mafia. All Rights Reserved. <br/>
+    Proudly presented by [Your Name].
+  </footer>
+  <script src="meow.js"></script>
+  <script>
+    window.onload = function() {
+      var confetti = new ConfettiGenerator({
+        target: 'confetti-canvas',
+        size: 2,
+        max: 40,
+        rotate: true,
+        props: [{
+        }, {
+          type: 'svg',
+          src: './coin.svg'
+        }, {
+          type: 'svg',
+          src: './bills.svg'
+        }, {
+          type: 'svg',
+          src: './bag.svg'
+        }]
+      });
+      confetti.render();
+    }
+  </script>
+</body>
+</html>
